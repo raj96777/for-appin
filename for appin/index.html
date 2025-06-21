@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notification Demo</title>
+</head>
+<body>
+  <button onclick="showNotification()">Show Notification</button>
+
+  <script>
+    function showNotification() {
+      // Ask permission if not granted
+      if (Notification.permission !== 'granted') {
+        Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+            new Notification('Hello!', {
+              body: 'This is your custom popup message.',
+              icon: 'https://via.placeholder.com/128' // optional icon
+            });
+          }
+        });
+      } else {
+        new Notification('Hello!', {
+          body: 'This is your custom popup message.',
+          icon: 'https://via.placeholder.com/128'
+        });
+      }
+    }
+  </script>
+</body>
+</html>
